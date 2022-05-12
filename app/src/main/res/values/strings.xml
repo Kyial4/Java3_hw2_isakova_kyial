@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Java3_hw2_isakova_kyial</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="edittext_click">Кликни, чтобы попасть в тридевятое царство</string>
+    <string name="btn_text">Вход</string>
+</resources>
