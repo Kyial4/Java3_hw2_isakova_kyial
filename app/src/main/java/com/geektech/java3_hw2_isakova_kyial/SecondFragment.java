@@ -17,6 +17,7 @@ public class SecondFragment extends Fragment {
 
     private TextView textview;
     private Button btnClick2;
+    public final String KEY="Key1";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,7 +31,7 @@ public class SecondFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         textview = view.findViewById(R.id.textview);
         btnClick2=view.findViewById(R.id.btn_click2);
-        if (!textview.getText().toString().isEmpty()) {
+        if (getArguments()!=null) {
            String val= getArguments().getString("key1");
            textview.setText(val);
         }
@@ -38,7 +39,7 @@ public class SecondFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Bundle bundle=new Bundle();
-                bundle.putString("key1",textview.getText().toString());
+                bundle.putString(KEY,textview.getText().toString());
                 ThirdFragment fragment =new ThirdFragment();
                 fragment.setArguments(bundle);
                 requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment).addToBackStack(null).commit();

@@ -16,6 +16,7 @@ import android.widget.EditText;
 public class FirstFragment extends Fragment {
     private Button btnClick;
     private EditText edittext;
+    public final String KEY="Key1";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -29,14 +30,17 @@ public class FirstFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         edittext=view.findViewById(R.id.et_text);
         btnClick=view.findViewById(R.id.btn_click);
+        if (getArguments()!=null){
+            String val=getArguments().getString(KEY);
+        }
         btnClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle bundle=new Bundle();
-                bundle.putString("key1",edittext.getText().toString());
-                SecondFragment fragment =new SecondFragment();
+                bundle.putString(KEY, edittext.getText().toString());
+                SecondFragment fragment = new SecondFragment();
                 fragment.setArguments(bundle);
-                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container,fragment).addToBackStack(null).commit();
+                requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment).addToBackStack(null).commit();
             }
         });
 
